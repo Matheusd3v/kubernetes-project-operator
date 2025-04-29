@@ -25,3 +25,16 @@ go.work
 *.swp
 *.swo
 *~
+
+# kubeconfig local
+.kube/
+
+# Arquivos temporários de editor
+*.tmp
+
+# Binários e caches
+build/
+dist/
+
+*.crt
+*.key

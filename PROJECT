@@ -7,4 +7,14 @@ layout:
 - go.kubebuilder.io/v4
 projectName: kubernetes-project-operator
 repo: github.com/Matheusd3v/kubernetes-project-operator
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: home.lab
+  group: projects
+  kind: Project
+  path: github.com/Matheusd3v/kubernetes-project-operator/api/v1
+  version: v1
 version: "3"

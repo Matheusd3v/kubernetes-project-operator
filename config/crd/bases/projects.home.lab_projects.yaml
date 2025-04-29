@@ -1,0 +1,63 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.17.2
+  name: projects.projects.home.lab
+spec:
+  group: projects.home.lab
+  names:
+    kind: Project
+    listKind: ProjectList
+    plural: projects
+    singular: project
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: Project is the Schema for the projects API.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: ProjectSpec defines the desired state of Project.
+            properties:
+              enableRBAC:
+                description: EnableRBAC indicates if RBAC rules should be generated
+                type: boolean
+              namespaceName:
+                description: NamespaceName is the name of the namespace to create
+                type: string
+              owner:
+                description: Owner identifies who owns the project (team, email, etc)
+                type: string
+            required:
+            - enableRBAC
+            - namespaceName
+            - owner
+            type: object
+          status:
+            description: ProjectStatus defines the observed state of Project.
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
